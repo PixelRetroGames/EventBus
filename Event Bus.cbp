@@ -31,9 +31,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="include/Event.h" />
-		<Unit filename="include/Event_bus.h" />
-		<Unit filename="include/Function_handler.h" />
+		<Unit filename="include/Event_bus/Event.h" />
+		<Unit filename="include/Event_bus/Event_bus.h" />
+		<Unit filename="include/Event_bus/Function_handler.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

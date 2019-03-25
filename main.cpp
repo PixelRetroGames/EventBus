@@ -50,6 +50,7 @@ class Impare_system
   strcpy(sq,ev->msg1);
   strcat(sq,ev->msg2);
   printf(sq,ev->nr);
+  event_bus.Clear();
  }
 };
 

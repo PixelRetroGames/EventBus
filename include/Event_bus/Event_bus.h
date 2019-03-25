@@ -9,8 +9,6 @@
 #include <typeindex>
 #include <typeinfo>
 
-#include <iostream>
-
 namespace EV_BUS
 {
     class Event_bus
@@ -19,9 +17,17 @@ namespace EV_BUS
      std::map<std::type_index,std::list<Base_function_handler*>*> subscribers;
 
      public:
+     void Clear()
+     {
+      for(auto &subscriber : subscribers)
+          {
+           subscriber.second->clear();
+          }
+      subscribers.clear();
+     }
 
      template<typename Target,typename Event_type>
-     void Subscribe(Target *instance,void (Target::*member_function)(Event_type *))
+     void Subscribe(Target *instance,void (Target::*member_function)(Event_type*))
      {
       std::list<Base_function_handler*> *handlers=subscribers[typeid(Event_type)];
       if(handlers==nullptr)
@@ -35,7 +41,7 @@ namespace EV_BUS
      template<typename Event_type>
      void Publish(Event_type *event)
      {
-      if(subscribers[typeid(Event_type)]==nullptr)
+      if(subscribers.count(typeid(Event_type))==0)
          return;
       std::list<Base_function_handler*> *handlers=subscribers[typeid(Event_type)];
       for(auto &handler : *handlers)
@@ -43,6 +49,8 @@ namespace EV_BUS
            if(handler!=nullptr)
               {
                handler->Execute(event);
+               if(handlers->empty())
+                  return;
               }
           }
      }
