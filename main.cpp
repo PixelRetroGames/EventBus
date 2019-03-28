@@ -2,7 +2,7 @@
 #include <cstring>
 #include <iostream>
 
-#include "include/Event_bus/Event_bus.h"
+#include "EV_BUS/EV_BUS.h"
 
 class Pare: public EV_BUS::Event
 {
@@ -50,7 +50,6 @@ class Impare_system
   strcpy(sq,ev->msg1);
   strcat(sq,ev->msg2);
   printf(sq,ev->nr);
-  event_bus.Clear();
  }
 };
 
@@ -61,7 +60,7 @@ int main()
  ps.init();
  is.init();
 
- for(int i=0;i<10;i++)
+ for(int i=0;i<100;i++)
      {
       if(i%2==0)
          {
