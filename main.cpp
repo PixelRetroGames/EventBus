@@ -4,13 +4,19 @@
 
 #include "EV_BUS/EV_BUS.h"
 
+const int NMAX=10000;
+
 class Pare: public EV_BUS::Event
 {
  public:
  char *msg={"nr este par: %d\n"};
+ int ma[NMAX][NMAX];
  int nr;
 
- Pare(int _nr): nr(_nr) {};
+ Pare(int _nr): nr(_nr)
+ {
+  memset(ma,0,sizeof ma);
+ }
 };
 
 class Impare: public EV_BUS::Event
@@ -27,7 +33,7 @@ EV_BUS::Event_bus event_bus;
 class Pare_system
 {
  public:
- void init()
+ Pare_system()
  {
   event_bus.Subscribe(this,&Pare_system::Afisare);
  }
@@ -40,7 +46,7 @@ class Pare_system
 class Impare_system
 {
  public:
- void init()
+ Impare_system()
  {
   event_bus.Subscribe(this,&Impare_system::Printare);
  }
@@ -57,8 +63,6 @@ int main()
 {
  Pare_system ps;
  Impare_system is;
- ps.init();
- is.init();
 
  for(int i=0;i<100;i++)
      {
@@ -67,7 +71,9 @@ int main()
           event_bus.Publish(new Pare(i));
          }
       else
-         event_bus.Publish(new Impare(i));
+         {
+          event_bus.Publish(new Impare(i));
+         }
      }
  printf("\n\nFinished!\n");
  return 0;

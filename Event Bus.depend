@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1553517687 source:e:\programming\event bus\main.cpp
+1571030861 source:e:\programming\event bus\main.cpp
 	<cstdio>
 	<cstring>
 	<iostream>
-	"include/Event_bus/Event_bus.h"
+	"EV_BUS/EV_BUS.h"
 
 1553508784 e:\programming\event bus\include\event_bus.h
 	"Function_handler.h"
@@ -31,4 +31,21 @@
 	"Event.h"
 
 1553507814 e:\programming\event bus\include\event_bus\event.h
+
+1553794688 e:\programming\event bus\ev_bus\ev_bus.h
+	"include/Event.h"
+	"include/Event_bus.h"
+
+1553511414 e:\programming\event bus\ev_bus\include\event.h
+
+1571030873 e:\programming\event bus\ev_bus\include\event_bus.h
+	"Function_handler.h"
+	<map>
+	<list>
+	<memory>
+	<typeindex>
+	<typeinfo>
+
+1553511347 e:\programming\event bus\ev_bus\include\function_handler.h
+	"Event.h"
 

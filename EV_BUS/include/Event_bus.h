@@ -53,6 +53,7 @@ namespace EV_BUS
                   return;
               }
           }
+      delete event;
      }
     };
 }
